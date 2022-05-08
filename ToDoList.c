@@ -3,7 +3,7 @@
 // 22100493 이다정 - 일정삭제/일정읽기 & 파일 저장하기 , 날짜 검색함수, 메뉴
 
 int readToDoList(ToDoList t){ // 일정 목록 show (미완료 일정-중요도!=0 & 완료 일정 출력-중요도 0)
-    printf("%-8s  %-5s  %-5d   ",t.Todo,t.time,t.impo);
+    printf("%-8s  %-5s  %-5d",t.Todo,t.time,t.impo);
     if(t.end == 1) printf("완료\n");
     else printf("미완료 \n");
     return 0;
@@ -58,7 +58,7 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
         getchar();
         fgets(search,MAX-1,stdin);
 
-        printf("%s %s %s %s %s\n","제품명", "중량", "제품설명", "가격", "배송방법");
+        printf("%-10s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부"); 
         printf("---------------------------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
@@ -77,7 +77,7 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
         getchar();
         fgets(search,MAX-1,stdin);
 
-        printf("%s %s %s %s %s\n","제품명", "중량", "제품설명", "가격", "배송방법");
+        printf("%-10s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
         printf("---------------------------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
@@ -94,7 +94,7 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
         printf("검색하고 싶은 할 일의 중요도는? ");
         scanf("%d",&num);
 
-        printf("%s %s %s %s %s\n","제품명", "중량", "제품설명", "가격", "배송방법");
+        printf("%-10s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
         printf("---------------------------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
@@ -111,7 +111,7 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
         printf("검색하고 싶은 할 일의 완료여부는?(완료:1,미완료:2) ");
         scanf("%d",&num);
 
-        printf("%s %s %s %s %s\n","제품명", "중량", "제품설명", "가격", "배송방법");
+        printf("%-10s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
         printf("---------------------------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
