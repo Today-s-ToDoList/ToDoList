@@ -6,21 +6,21 @@
 #define MAX 256
 
  typedef struct{
-    char Todo[MAX-1];
-    char time[MAX-1];
+    char Todo[MAX];
+    char time[MAX];
     int impo;
     int end;
  }ToDoList;
 
-int createToDoList(ToDoList *t); // ÀÏÁ¤ Ãß°¡ (ÀÏÁ¤ÀÌ¸§, ÀÏÁ¤ ½Ã°£, Áß¿äµµ(1-3), ¿Ï·á¿©ºÎ)
-int readToDoList(ToDoList t); // ÀÏÁ¤ ¸ñ·Ï show (¹Ì¿Ï·á ÀÏÁ¤-Áß¿äµµ!=0 & ¿Ï·á ÀÏÁ¤ Ãâ·Â-Áß¿äµµ 0)
-int listToDoList(ToDoList *t[], int count); // ÀüÃ¼ µî·ÏµÈ Á¦Ç° ¸®½ºÆ® Ãâ·Â
-int updateToDoList(ToDoList *t); // ÀÏÁ¤ ¼öÁ¤
-int deleteToDoList(ToDoList *t[], int count); // ¿Ï·áµÈ ÀÏÁ¤ Ã¼Å©(»èÁ¦)  : ¿Ï·áµÈ ÀÏÁ¤ÀÇ Áß¿äµµ 0À¸·Î ¼³Á¤
-void searchToDoList(ToDoList *t[], int count); // Á¦Ç°ÀÌ¸§ °Ë»ö
-void saveData(ToDoList *t[],int count); // ³¯Â¥ ÆÄÀÏ ÀúÀå
-int loadData(ToDoList *t[]); // ³¯Â¥ ÆÄÀÏÀ» ÀĞ¾î¿À±â
+int createToDoList(ToDoList *t); // ì¼ì • ì¶”ê°€ (ì¼ì •ì´ë¦„, ì¼ì • ì‹œê°„, ì¤‘ìš”ë„(1-3), ì™„ë£Œì—¬ë¶€)
+int readToDoList(ToDoList t); // ì¼ì • ëª©ë¡ show (ë¯¸ì™„ë£Œ ì¼ì •-ì¤‘ìš”ë„!=0 & ì™„ë£Œ ì¼ì • ì¶œë ¥-ì¤‘ìš”ë„ 0)
+int listToDoList(ToDoList *t[], int count); // ì „ì²´ ë“±ë¡ëœ ì œí’ˆ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
+int updateToDoList(ToDoList *t); // ì¼ì • ìˆ˜ì •
+int deleteToDoList(ToDoList *t[], int count); // ì™„ë£Œëœ ì¼ì • ì²´í¬(ì‚­ì œ)  : ì™„ë£Œëœ ì¼ì •ì˜ ì¤‘ìš”ë„ 0ìœ¼ë¡œ ì„¤ì •
+void searchToDoList(ToDoList *t[], int count); // ì œí’ˆì´ë¦„ ê²€ìƒ‰
+void saveData(ToDoList *t[],int count); // ë‚ ì§œ íŒŒì¼ ì €ì¥
+int loadData(ToDoList *t[]); // ë‚ ì§œ íŒŒì¼ì„ ì½ì–´ì˜¤ê¸°
 int selectDataNo(ToDoList *t[], int count);
-int selectMenu(); // ¸Ş´º : ¾Æ·¡ ÇÔ¼öµéÀ» ¸Ş´º·Î Ãâ·ÂÇÏ´Â ÇÔ¼ö
-struct tm *currentTime(); // ÇöÀç ½Ã°£  : ÇöÀç ½Ã°£ ºÒ·¯¿À´Â ÇÔ¼ö
-int restTimeCal(ToDoList *t); // ³²Àº ½Ã°£ °è»ê : ³²Àº ±âÇÑ ºÒ·¯¿À´Â ÇÔ¼ö
+int selectMenu(); // ë©”ë‰´ : ì•„ë˜ í•¨ìˆ˜ë“¤ì„ ë©”ë‰´ë¡œ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
+struct tm *currentTime(); // í˜„ì¬ ì‹œê°„  : í˜„ì¬ ì‹œê°„ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜
+int restTimeCal(ToDoList *t); // ë‚¨ì€ ì‹œê°„ ê³„ì‚° : ë‚¨ì€ ê¸°í•œ ë¶ˆëŸ¬ì˜¤ëŠ” í•¨ìˆ˜

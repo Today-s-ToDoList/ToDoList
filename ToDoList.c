@@ -3,20 +3,27 @@
 //22100478 윤은서 - 일정추가/일정수정
 
 int createToDoList(ToDoList *t) { //일정추가 (일정 이름, 일정 시간, 중요도(1-3))
+    getchar();
     printf("일정 이름은? ");
-    scanf("%s", t->Todo);
+    fgets(t->Todo,MAX-1,stdin);
+    t->Todo[strlen(t->Todo)-1]='\0';
     printf("일정 시간은? ");
-    scanf("%s", &t->time);
+    fgets(t->time,MAX-1,stdin);
+    t->time[strlen(t->time)-1]='\0';
     printf("중요도는?(1-3) ");
     scanf("%d", &t->impo);
+    t->end=0;
     printf("=> 추가됨!\n");
     return 1;
 }
 int updateToDoList(ToDoList *t) { //일정수정 (일정 이름, 일정 시간, 중요도(1-3))
     printf("일정 이름은? ");
-    scanf("%s", t->Todo);
+    getchar();
+    fgets(t->Todo,MAX-1,stdin);
+    t->Todo[strlen(t->Todo)-1]='\0';
     printf("일정 시간은? ");
-    scanf("%s", &t->time);
+    fgets(t->time,MAX-1,stdin);
+    t->time[strlen(t->time)-1]='\0';
     printf("중요도는?(1-3) ");
     scanf("%d", &t->impo);
     printf("=> 수정성공!\n");
@@ -26,14 +33,14 @@ int updateToDoList(ToDoList *t) { //일정수정 (일정 이름, 일정 시간, 중요도(1-3))
 // 22100493 이다정 - 일정삭제/일정읽기 & 파일 저장하기 , 날짜 검색함수, 메뉴
 
 int readToDoList(ToDoList t) { // 일정 목록 show (미완료 일정-중요도!=0 & 완료 일정 출력-중요도 0)
-    printf("%-8s  %-5s  %-5d",t.Todo,t.time,t.impo);
-    if(t.end == 1) printf("완료\n");
-    else printf("미완료 \n");
+    printf("%s  %s  %d",t.Todo,t.time,t.impo);
+    if(t.end == 1) printf(" 완료\n");
+    else printf(" 미완료 \n");
     return 0;
 }
 
 int listToDoList(ToDoList *t[], int count){ // 전체 등록된 제품 리스트 출력
-    printf("%-10s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
+    printf("%-15s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
     printf("---------------------------------------------------------------------------------\n");
     for(int i=0;i<count;i++)
     {
@@ -60,9 +67,11 @@ int deleteToDoList(ToDoList *t[], int count){ // 완료된 일정 체크(삭제)  : 완료�
     scanf("%d",&deleteok);
     //삭제 진행
     if(deleteok == 1){
-        if(t[num-1]) free(t[num-1]);
-        t[num-1] = NULL;
-        count--;
+        t[num-1]->impo=0;
+        t[num-1]->end=1;
+        // if(t[num-1]) free(t[num-1]);
+        // t[num-1] = NULL;
+        // count--;
         printf("=> 삭제됨!\n");
     }
     return 0;
@@ -131,7 +140,7 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
     }
     //4. 완료여부로 검색
     else if(num==4){
-        printf("검색하고 싶은 할 일의 완료여부는?(완료:1,미완료:2) ");
+        printf("검색하고 싶은 할 일의 완료여부는?(미완료:1,완료:2) ");
         scanf("%d",&num);
 
         printf("%s %s %s %s\n","할 일", "기한", "중요도", "완료여부");
@@ -155,7 +164,7 @@ void saveData(ToDoList *t[],int count){ // 날짜 파일 저장
 
     for(int i=0;i<count;i++){
         if(t[i]==NULL) continue;
-        fprintf(fp, "%s;%s;%d;%d;\n",t[i]->Todo,t[i]->time,t[i]->impo,t[i]->end);
+        fprintf(fp, "%s;%s;%d;%d;",t[i]->Todo,t[i]->time,t[i]->impo,t[i]->end);
     }
     fclose(fp);
     printf("==> 저장됨!\n\n");

@@ -1,7 +1,7 @@
 #include "ToDoList.c"
 
 int main(void) {
-    ToDoList *t[100]; //í¬ì¸í„°ë³€ìˆ˜ ì„ ì–¸
+    ToDoList *t[100]; //Æ÷ÀÎÅÍº¯¼ö ¼±¾ğ
     int count = 0, menu;
     int num;
     count += loadData(t);
@@ -13,17 +13,17 @@ int main(void) {
             if(count > 0)
                 listToDoList(t,count);
             else
-                printf("ë°ì´í„°ê°€ ì—†ìŠµë‹ˆë‹¤.\n");
+                printf("µ¥ÀÌÅÍ°¡ ¾ø½À´Ï´Ù.\n");
         }
         else if (menu == 2) {
-            t[count] = (ToDoList *)malloc(sizeof(ToDoList)); //ë©”ëª¨ë¦¬ ë™ì í• ë‹¹
+            t[count] = (ToDoList *)malloc(sizeof(ToDoList)); //¸Ş¸ğ¸® µ¿ÀûÇÒ´ç
             count += createToDoList(t[count]);
-            printf("=> ì¶”ê°€ë¨!\n");
+            printf("=> Ãß°¡µÊ!\n");
         }
         else if (menu == 3) {
             num = selectDataNo(t,count);
             if(num == 0) {
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
                 continue;
             }
             updateToDoList(t[num-1]);
@@ -31,16 +31,16 @@ int main(void) {
         else if (menu == 4) {
             num = selectDataNo(t,count);
             if(num == 0) {
-                printf("=> ì·¨ì†Œë¨!\n");
+                printf("=> Ãë¼ÒµÊ!\n");
                 continue;
             }
             int deleteok;
-            printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1)");
+            printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ :1)");
             scanf("%d",&deleteok);
             if(deleteok == 1){
-                if(t[num-1]) free(t[num-1]); //ë™ì í• ë‹¹ í•´ì œ
-                t[num-1] = NULL; //í¬ì¸í„° í•´ì œ
-                printf("=> ì‚­ì œë¨!\n");
+                if(t[num-1]) free(t[num-1]); //µ¿ÀûÇÒ´ç ÇØÁ¦
+                t[num-1] = NULL; //Æ÷ÀÎÅÍ ÇØÁ¦
+                printf("=> »èÁ¦µÊ!\n");
             }
         }
         else if (menu == 5) {
@@ -48,15 +48,15 @@ int main(void) {
         }
         else if (menu == 6) {
             saveData(t,count);
-            printf("=> ì €ì¥ë¨!\n\n");
+            printf("=> ÀúÀåµÊ!\n\n");
         }
         else if (menu == 7) {
             struct tm *t = currentTime(t[num-1]);
             //restTimeCal(t[num-1]);
-            printf("í˜„ì¬ ì‹œê°„ : %dì‹œ %dë¶„\n", t->tm_hour, t->tm_min);
-            // ë‚ ì§œ ê³„ì‚° í•¨ìˆ˜
+            printf("ÇöÀç ½Ã°£ : %d½Ã %dºĞ\n", t->tm_hour, t->tm_min);
+            // ³¯Â¥ °è»ê ÇÔ¼ö
         }
     }
-    printf("ì¢…ë£Œë¨!\n");
+    printf("Á¾·áµÊ!\n");
     return 0;
 }
