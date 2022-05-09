@@ -51,10 +51,8 @@ int main(void) {
             printf("=> 저장됨!\n\n");
         }
         else if (menu == 7) {
-            struct tm *t = currentTime(t[num-1]);
-            //restTimeCal(t[num-1]);
-            printf("현재 시간 : %d시 %d분\n", t->tm_hour, t->tm_min);
-            // 날짜 계산 함수
+            struct tm t = currentTime();
+            printf("현재 시간 : %d시 %d분\n", t.tm_hour, t.tm_min);
         }
     }
     printf("종료됨!\n");

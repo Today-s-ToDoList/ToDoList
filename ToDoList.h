@@ -22,5 +22,5 @@ void saveData(ToDoList *t[],int count); // 날짜 파일 저장
 int loadData(ToDoList *t[]); // 날짜 파일을 읽어오기
 int selectDataNo(ToDoList *t[], int count);
 int selectMenu(); // 메뉴 : 아래 함수들을 메뉴로 출력하는 함수
-struct tm *currentTime(); // 현재 시간  : 현재 시간 불러오는 함수
+struct tm currentTime(); // 현재 시간  : 현재 시간 불러오는 함수
 int restTimeCal(ToDoList *t); // 남은 시간 계산 : 남은 기한 불러오는 함수

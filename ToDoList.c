@@ -229,13 +229,8 @@ int loadData(ToDoList *t[]){
     return count;
 }
 
-struct tm *currentTime() {
-    time_t timer;
-    timer = time(NULL); // 1970년 1월 1일 0시 0분 0초부터 시작하여 현재까지의 초
-    struct tm *time = localtime(&timer);
+struct tm currentTime() {
+    time_t timer = time(NULL);
+    struct tm time = *localtime(&timer);
     return time;
 }
-/*int restTimeCal(ToDoList *t) {
-    rest_hour=24-tm.tm_hour;
-    rest_min=60-tm-tm_min;
-}*/
