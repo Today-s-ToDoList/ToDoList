@@ -1,155 +1,156 @@
 #include "ToDoList.h"
 
-//22100478 ìœ¤ì€ì„œ - ì¼ì •ì¶”ê°€/ì¼ì •ìˆ˜ì •
+//22100478 À±Àº¼­ - ÀÏÁ¤Ãß°¡/ÀÏÁ¤¼öÁ¤
 
-int createToDoList(ToDoList *t) { //ì¼ì •ì¶”ê°€ (ì¼ì • ì´ë¦„, ì¼ì • ì‹œê°„, ì¤‘ìš”ë„(1-3))
-    printf("ì¼ì • ì´ë¦„ì€? ");
+int createToDoList(ToDoList *t) { //ÀÏÁ¤Ãß°¡ (ÀÏÁ¤ ÀÌ¸§, ÀÏÁ¤ ½Ã°£, Áß¿äµµ(1-3))
+    printf("ÀÏÁ¤ ÀÌ¸§Àº? ");
     scanf("%s", t->Todo);
-    printf("ì¼ì • ì‹œê°„ì€? ");
+    printf("ÀÏÁ¤ ½Ã°£Àº? ");
     scanf("%s", &t->time);
-    printf("ì¤‘ìš”ë„ëŠ”?(1-3) ");
+    printf("Áß¿äµµ´Â?(1-3) ");
     scanf("%d", &t->impo);
-    printf("=> ì¶”ê°€ë¨!\n");
+    printf("=> Ãß°¡µÊ!\n");
     return 1;
 }
-int updateToDoList(ToDoList *t) { //ì¼ì •ìˆ˜ì • (ì¼ì • ì´ë¦„, ì¼ì • ì‹œê°„, ì¤‘ìš”ë„(1-3))
-    printf("ì¼ì • ì´ë¦„ì€? ");
+int updateToDoList(ToDoList *t) { //ÀÏÁ¤¼öÁ¤ (ÀÏÁ¤ ÀÌ¸§, ÀÏÁ¤ ½Ã°£, Áß¿äµµ(1-3))
+    printf("ÀÏÁ¤ ÀÌ¸§Àº? ");
     scanf("%s", t->Todo);
-    printf("ì¼ì • ì‹œê°„ì€? ");
+    printf("ÀÏÁ¤ ½Ã°£Àº? ");
     scanf("%d", &t->time);
-    printf("ì¤‘ìš”ë„ëŠ”?(1-3) ");
+    printf("Áß¿äµµ´Â?(1-3) ");
     scanf("%d", &t->impo);
-    printf("=> ìˆ˜ì •ì„±ê³µ!\n");
+    printf("=> ¼öÁ¤¼º°ø!\n");
     return 1;
+}
 
-// 22100493 ì´ë‹¤ì • - ì¼ì •ì‚­ì œ/ì¼ì •ì½ê¸° & íŒŒì¼ ì €ì¥í•˜ê¸° , ë‚ ì§œ ê²€ìƒ‰í•¨ìˆ˜, ë©”ë‰´
+// 22100493 ÀÌ´ÙÁ¤ - ÀÏÁ¤»èÁ¦/ÀÏÁ¤ÀĞ±â & ÆÄÀÏ ÀúÀåÇÏ±â , ³¯Â¥ °Ë»öÇÔ¼ö, ¸Ş´º
 
-int readToDoList(ToDoList t) { // ì¼ì • ëª©ë¡ show (ë¯¸ì™„ë£Œ ì¼ì •-ì¤‘ìš”ë„!=0 & ì™„ë£Œ ì¼ì • ì¶œë ¥-ì¤‘ìš”ë„ 0)
+int readToDoList(ToDoList t) { // ÀÏÁ¤ ¸ñ·Ï show (¹Ì¿Ï·á ÀÏÁ¤-Áß¿äµµ!=0 & ¿Ï·á ÀÏÁ¤ Ãâ·Â-Áß¿äµµ 0)
     printf("%-8s  %-5s  %-5d",t.Todo,t.time,t.impo);
-    if(t.end == 1) printf("ì™„ë£Œ\n");
-    else printf("ë¯¸ì™„ë£Œ \n");
+    if(t.end == 1) printf("¿Ï·á\n");
+    else printf("¹Ì¿Ï·á \n");
     return 0;
 }
 
-int listToDoList(ToDoList *t[], int count){ // ì „ì²´ ë“±ë¡ëœ ì œí’ˆ ë¦¬ìŠ¤íŠ¸ ì¶œë ¥
-    printf("%-10s %-5s %-5s %-5s\n","í•  ì¼", "ê¸°í•œ", "ì¤‘ìš”ë„", "ì™„ë£Œì—¬ë¶€");
+int listToDoList(ToDoList *t[], int count){ // ÀüÃ¼ µî·ÏµÈ Á¦Ç° ¸®½ºÆ® Ãâ·Â
+    printf("%-10s %-5s %-5s %-5s\n","ÇÒ ÀÏ", "±âÇÑ", "Áß¿äµµ", "¿Ï·á¿©ºÎ");
     printf("---------------------------------------------------------------------------------\n");
     for(int i=0;i<count;i++)
     {
         if(t[i]==NULL) continue;
         printf("%2d ",i+1);
-        readTodolist(*t[i]);
+        readToDoList(*t[i]);
     }
     return 0;
 }
 
-int deleteToDoList(ToDoList *t[], int count){ // ì™„ë£Œëœ ì¼ì • ì²´í¬(ì‚­ì œ)  : ì™„ë£Œëœ ì¼ì •ì˜ ì¤‘ìš”ë„ 0ìœ¼ë¡œ ì„¤ì •
+int deleteToDoList(ToDoList *t[], int count){ // ¿Ï·áµÈ ÀÏÁ¤ Ã¼Å©(»èÁ¦)  : ¿Ï·áµÈ ÀÏÁ¤ÀÇ Áß¿äµµ 0À¸·Î ¼³Á¤
     int num;
     listToDoList(t, count);
-    printf("ëª‡ë²ˆì„ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ? (ì·¨ì†Œ:0)? ");  //ì‚­ì œí•  ì œí’ˆ ë²ˆí˜¸ ë¬»ê¸°
+    printf("¸î¹øÀ» »èÁ¦ÇÏ½Ã°Ú½À´Ï±î? (Ãë¼Ò:0)? ");  //»èÁ¦ÇÒ Á¦Ç° ¹øÈ£ ¹¯±â
     scanf("%d",&num);
 
-    //ì‚­ì œ ì·¨ì†Œ
+    //»èÁ¦ Ãë¼Ò
     if(num == 0) {
-        printf("=> ì·¨ì†Œë¨!\n");
+        printf("=> Ãë¼ÒµÊ!\n");
         return 0;
     }
     int deleteok;
-    printf("ì •ë§ë¡œ ì‚­ì œí•˜ì‹œê² ìŠµë‹ˆê¹Œ?(ì‚­ì œ :1)");
+    printf("Á¤¸»·Î »èÁ¦ÇÏ½Ã°Ú½À´Ï±î?(»èÁ¦ :1)");
     scanf("%d",&deleteok);
-    //ì‚­ì œ ì§„í–‰
+    //»èÁ¦ ÁøÇà
     if(deleteok == 1){
         if(t[num-1]) free(t[num-1]);
         t[num-1] = NULL;
         count--;
-        printf("=> ì‚­ì œë¨!\n");
+        printf("=> »èÁ¦µÊ!\n");
     }
     return 0;
 }
 
-void searchToDoList(ToDoList *t[], int count){ //í•  ì¼ ê²€ìƒ‰
+void searchToDoList(ToDoList *t[], int count){ //ÇÒ ÀÏ °Ë»ö
     int scnt =0, num;
     char search[MAX];
 
-    printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ ë©”ë‰´ëŠ”?(1.í•  ì¼ ì œëª© 2.ê¸°í•œ, 3.ì¤‘ìš”ë„ 4.ì™„ë£Œì—¬ë¶€) "); //ì œí’ˆê²€ìƒ‰í•  ë°©ë²• ë¬»ê¸°
+    printf("°Ë»öÇÏ°í ½ÍÀº ¸Ş´º´Â?(1.ÇÒ ÀÏ Á¦¸ñ 2.±âÇÑ, 3.Áß¿äµµ 4.¿Ï·á¿©ºÎ) "); //Á¦Ç°°Ë»öÇÒ ¹æ¹ı ¹¯±â
     scanf("%d",&num);
 
-    //1. í•  ì¼ ì œëª©ìœ¼ë¡œ ê²€ìƒ‰
+    //1. ÇÒ ÀÏ Á¦¸ñÀ¸·Î °Ë»ö
     if(num==1){
-        printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ í•  ì¼ì˜ ì œëª©ì€? ");
+        printf("°Ë»öÇÏ°í ½ÍÀº ÇÒ ÀÏÀÇ Á¦¸ñÀº? ");
         getchar();
         fgets(search,MAX-1,stdin);
 
-        printf("%s %s %s %s\n","í•  ì¼", "ê¸°í•œ", "ì¤‘ìš”ë„", "ì™„ë£Œì—¬ë¶€");
+        printf("%s %s %s %s\n","ÇÒ ÀÏ", "±âÇÑ", "Áß¿äµµ", "¿Ï·á¿©ºÎ");
         printf("---------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
             if(t[i]==NULL) continue;
             if(strstr(search,t[i]->Todo)) {
                 printf("%2d ",i+1);
-                readTodolist(*t[i]);
+                readToDoList(*t[i]);
                 scnt++;
             }
         }
     }
 
-    //2. í•  ì¼ì˜ ê¸°í•œìœ¼ë¡œ ê²€ìƒ‰
+    //2. ÇÒ ÀÏÀÇ ±âÇÑÀ¸·Î °Ë»ö
     else if(num==2){
-        printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ í•  ì¼ì˜ ê¸°í•œì€? ");
+        printf("°Ë»öÇÏ°í ½ÍÀº ÇÒ ÀÏÀÇ ±âÇÑÀº? ");
         getchar();
         fgets(search,MAX-1,stdin);
 
-        printf("%s %s %s %s\n","í•  ì¼", "ê¸°í•œ", "ì¤‘ìš”ë„", "ì™„ë£Œì—¬ë¶€");
+        printf("%s %s %s %s\n","ÇÒ ÀÏ", "±âÇÑ", "Áß¿äµµ", "¿Ï·á¿©ºÎ");
         printf("---------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
             if(t[i]==NULL) continue;
             if(strstr(search,t[i]->time)) {
                 printf("%2d ",i+1);
-                readTodolist(*t[i]);
+                readToDoList(*t[i]);
                 scnt++;
             }
         }
     }
-    // í•  ì¼ì˜ ì¤‘ìš”ë„ë¡œ ê²€ìƒ‰
+    // ÇÒ ÀÏÀÇ Áß¿äµµ·Î °Ë»ö
     else if(num==3){
-        printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ í•  ì¼ì˜ ì¤‘ìš”ë„ëŠ”? ");
+        printf("°Ë»öÇÏ°í ½ÍÀº ÇÒ ÀÏÀÇ Áß¿äµµ´Â? ");
         scanf("%d",&num);
 
-        printf("%s %s %s %s\n","í•  ì¼", "ê¸°í•œ", "ì¤‘ìš”ë„", "ì™„ë£Œì—¬ë¶€");
+        printf("%s %s %s %s\n","ÇÒ ÀÏ", "±âÇÑ", "Áß¿äµµ", "¿Ï·á¿©ºÎ");
         printf("---------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
             if(t[i]==NULL) continue;
             if(num==t[i]->impo) {
                 printf("%2d ",i+1);
-                readTodolist(*t[i]);
+                readToDoList(*t[i]);
                 scnt++;
             }
         }
     }
-    //4. ì™„ë£Œì—¬ë¶€ë¡œ ê²€ìƒ‰
+    //4. ¿Ï·á¿©ºÎ·Î °Ë»ö
     else if(num==4){
-        printf("ê²€ìƒ‰í•˜ê³  ì‹¶ì€ í•  ì¼ì˜ ì™„ë£Œì—¬ë¶€ëŠ”?(ì™„ë£Œ:1,ë¯¸ì™„ë£Œ:2) ");
+        printf("°Ë»öÇÏ°í ½ÍÀº ÇÒ ÀÏÀÇ ¿Ï·á¿©ºÎ´Â?(¿Ï·á:1,¹Ì¿Ï·á:2) ");
         scanf("%d",&num);
 
-        printf("%s %s %s %s\n","í•  ì¼", "ê¸°í•œ", "ì¤‘ìš”ë„", "ì™„ë£Œì—¬ë¶€");
+        printf("%s %s %s %s\n","ÇÒ ÀÏ", "±âÇÑ", "Áß¿äµµ", "¿Ï·á¿©ºÎ");
         printf("---------------------------------------------\n");
         for(int i=0;i<count;i++)
         {
             if(t[i]==NULL) continue;
             if(num-1 == t[i]->end) {
                 printf("%2d ",i+1);
-                readTodolist(*t[i]);
+                readToDoList(*t[i]);
                 scnt++;
             }
         }
     }
-    if(scnt==0) printf("=> ê²€ìƒ‰ëœ ë°ì´í„° ì—†ìŒ!");
+    if(scnt==0) printf("=> °Ë»öµÈ µ¥ÀÌÅÍ ¾øÀ½!");
     printf("\n");
 }
 
-void saveData(ToDoList *t[],int count){ // ë‚ ì§œ íŒŒì¼ ì €ì¥
+void saveData(ToDoList *t[],int count){ // ³¯Â¥ ÆÄÀÏ ÀúÀå
     FILE *fp = fopen("TodoList.txt","wt");
 
     for(int i=0;i<count;i++){
@@ -157,21 +158,21 @@ void saveData(ToDoList *t[],int count){ // ë‚ ì§œ íŒŒì¼ ì €ì¥
         fprintf(fp, "%s;%s;%d;%d;\n",t[i]->Todo,t[i]->time,t[i]->impo,t[i]->end);
     }
     fclose(fp);
-    printf("==> ì €ì¥ë¨!\n\n");
+    printf("==> ÀúÀåµÊ!\n\n");
 }
 
-int selectMenu(){ // ë©”ë‰´ : ì•„ë˜ í•¨ìˆ˜ë“¤ì„ ë©”ë‰´ë¡œ ì¶œë ¥í•˜ëŠ” í•¨ìˆ˜
+int selectMenu(){ // ¸Ş´º : ¾Æ·¡ ÇÔ¼öµéÀ» ¸Ş´º·Î Ãâ·ÂÇÏ´Â ÇÔ¼ö
     int menu;
     printf("\n*** TO DO LIST ***\n");
-    printf("1. ì˜¤ëŠ˜ì˜ í•  ì¼ ì¡°íšŒ\n");
-    printf("2. í•  ì¼ ì¶”ê°€\n");
-    printf("3. í•  ì¼ ìˆ˜ì •\n");
-    printf("4. í•  ì¼ ì‚­ì œ\n");
-    printf("5. í•  ì¼ ê²€ìƒ‰\n");
-    printf("6. í•  ì¼ ëª©ë¡ íŒŒì¼ì— ì €ì¥\n");
-    printf("7. í•  ì¼ ì‹œê°„ ê³„ì‚° (ë‹¹ì¼)\n");
-    printf("0. ì¢…ë£Œ\n\n");
-    printf("=> ì›í•˜ëŠ” ë©”ë‰´ëŠ”? ");
+    printf("1. ¿À´ÃÀÇ ÇÒ ÀÏ Á¶È¸\n");
+    printf("2. ÇÒ ÀÏ Ãß°¡\n");
+    printf("3. ÇÒ ÀÏ ¼öÁ¤\n");
+    printf("4. ÇÒ ÀÏ »èÁ¦\n");
+    printf("5. ÇÒ ÀÏ °Ë»ö\n");
+    printf("6. ÇÒ ÀÏ ¸ñ·Ï ÆÄÀÏ¿¡ ÀúÀå\n");
+    printf("7. ÇÒ ÀÏ ½Ã°£ °è»ê (´çÀÏ)\n");
+    printf("0. Á¾·á\n\n");
+    printf("=> ¿øÇÏ´Â ¸Ş´º´Â? ");
     scanf("%d", &menu);
     return menu;
 }
@@ -179,12 +180,12 @@ int selectDataNo(ToDoList *t[], int count){
     int num;
 
     listToDoList(t,count);
-    printf("ë²ˆí˜¸ëŠ” (ì·¨ì†Œ:0)? ");
+    printf("¹øÈ£´Â (Ãë¼Ò:0)? ");
     scanf("%d",&num);
     return num;
 }
 
-//  22100478 ìœ¤ì€ì„œ - ì¼ì •ì¶”ê°€/ì¼ì •ìˆ˜ì • & íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸° , í˜„ì¬ ì‹œê°„ + ë‚¨ì€ ì‹œê°„ ê³„ì‚°
+//  22100478 À±Àº¼­ - ÀÏÁ¤Ãß°¡/ÀÏÁ¤¼öÁ¤ & ÆÄÀÏ ºÒ·¯¿À±â , ÇöÀç ½Ã°£ + ³²Àº ½Ã°£ °è»ê
 
 int loadData(ToDoList *t[]){
     char *ptr;
@@ -193,14 +194,14 @@ int loadData(ToDoList *t[]){
     FILE *fp = fopen("TodoList.txt","rt");
 
     if(fp==NULL) {
-        printf("==> íŒŒì¼ ì—†ìŒ! \n\n");
+        printf("==> ÆÄÀÏ ¾øÀ½! \n\n");
         return 0;
     }
 
     while(!feof(fp)){
         fgets(str,255,fp);
         
-        t[count] = (ToDoList *)malloc(sizeof(ToDoList)); //ë©”ëª¨ë¦¬ ë™ì í• ë‹¹
+        t[count] = (ToDoList *)malloc(sizeof(ToDoList)); //¸Ş¸ğ¸® µ¿ÀûÇÒ´ç
 
         ptr = strtok(str,";");
         strcpy(t[count]->Todo,ptr);
@@ -215,15 +216,15 @@ int loadData(ToDoList *t[]){
     }
     fclose(fp);
 
-    printf("==> ë¡œë”© ì™„ë£Œ! \n\n");
+    printf("==> ·Îµù ¿Ï·á! \n\n");
     return count;
 }
 
-int currentTime(ToDoList *t) {
+struct tm *currentTime() {
     time_t timer;
-    struct tm* t;
-    timer = time(NULL); // 1970ë…„ 1ì›” 1ì¼ 0ì‹œ 0ë¶„ 0ì´ˆë¶€í„° ì‹œì‘í•˜ì—¬ í˜„ì¬ê¹Œì§€ì˜ ì´ˆ
-    t = localtime(&timer);
+    timer = time(NULL); // 1970³â 1¿ù 1ÀÏ 0½Ã 0ºĞ 0ÃÊºÎÅÍ ½ÃÀÛÇÏ¿© ÇöÀç±îÁöÀÇ ÃÊ
+    struct tm *time = localtime(&timer);
+    return time;
 }
 /*int restTimeCal(ToDoList *t) {
     rest_hour=24-tm.tm_hour;

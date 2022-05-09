@@ -1,4 +1,4 @@
-#include "ToDoList.h"
+#include "ToDoList.c"
 
 int main(void) {
     ToDoList *t[100]; //포인터변수 선언
@@ -51,9 +51,9 @@ int main(void) {
             printf("=> 저장됨!\n\n");
         }
         else if (menu == 7) {
-            currentTime(t);
-            restTimeCal(t);
-            printf("현재 시간 : %d시 %d분\n", tm.hour, tm.min);
+            struct tm *t = currentTime(t[num-1]);
+            //restTimeCal(t[num-1]);
+            printf("현재 시간 : %d시 %d분\n", t->tm_hour, t->tm_min);
             // 날짜 계산 함수
         }
     }
