@@ -16,7 +16,7 @@ int updateToDoList(ToDoList *t) { //일정수정 (일정 이름, 일정 시간, 중요도(1-3))
     printf("일정 이름은? ");
     scanf("%s", t->Todo);
     printf("일정 시간은? ");
-    scanf("%d", &t->time);
+    scanf("%s", &t->time);
     printf("중요도는?(1-3) ");
     scanf("%d", &t->impo);
     printf("=> 수정성공!\n");
