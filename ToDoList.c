@@ -164,7 +164,8 @@ void saveData(ToDoList *t[],int count){ // 날짜 파일 저장
 
     for(int i=0;i<count;i++){
         if(t[i]==NULL) continue;
-        fprintf(fp, "%s;%s;%d;%d;",t[i]->Todo,t[i]->time,t[i]->impo,t[i]->end);
+        if(i==count-1) fprintf(fp, "%s;%s;%d;%d;",t[i]->Todo,t[i]->time,t[i]->impo,t[i]->end);
+        else fprintf(fp, "%s;%s;%d;%d;\n",t[i]->Todo,t[i]->time,t[i]->impo,t[i]->end);
     }
     fclose(fp);
     printf("==> 저장됨!\n\n");
