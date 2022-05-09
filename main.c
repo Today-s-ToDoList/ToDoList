@@ -1,10 +1,9 @@
 #include "ToDoList.h"
 
-int main(void){
+int main(void) {
     ToDoList *t[100]; //포인터변수 선언
     int count = 0, menu;
     int num;
-
     count += loadData(t);
 
     while (1){
@@ -13,7 +12,7 @@ int main(void){
         if (menu == 1) {
             if(count > 0)
                 listToDoList(t,count);
-            else   
+            else
                 printf("데이터가 없습니다.\n");
         }
         else if (menu == 2) {
@@ -52,6 +51,9 @@ int main(void){
             printf("=> 저장됨!\n\n");
         }
         else if (menu == 7) {
+            currentTime(t);
+            restTimeCal(t);
+            printf("현재 시간 : %d시 %d분\n", tm.hour, tm.min);
             // 날짜 계산 함수
         }
     }
