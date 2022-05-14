@@ -8,7 +8,7 @@
 ### 기능설명
   1. 구조체 : ToDoList
   2. 메뉴 : 아래 함수들을 메뉴로 출력하는 함수
-  3. Create to do list : 일정 추가 (일정이름, 일정 시간, 중요도(1-3), 완료여부)
+  3. Create to do list : 일정 추가 (일정이름, 일정 시간, 중요도(1-3))
   4. Read to do list : 일정 목록 show (미완료 일정-중요도!=0 & 완료 일정 출력-중요도 0)
   5. Update to do list : 일정 수정 
   6. Delete to do list : 완료된 일정 체크(삭제)  : 완료된 일정의 중요도 0으로 설정
