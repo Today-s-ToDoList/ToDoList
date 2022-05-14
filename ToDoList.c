@@ -13,7 +13,6 @@ int createToDoList(ToDoList *t) { //일정추가 (일정 이름, 일정 시간, 중요도(1-3))
     printf("중요도는?(1-3) ");
     scanf("%d", &t->impo);
     t->end=0;
-    printf("=> 추가됨!\n");
     return 1;
 }
 int updateToDoList(ToDoList *t) { //일정수정 (일정 이름, 일정 시간, 중요도(1-3))
@@ -26,7 +25,6 @@ int updateToDoList(ToDoList *t) { //일정수정 (일정 이름, 일정 시간, 중요도(1-3))
     t->time[strlen(t->time)-1]='\0';
     printf("중요도는?(1-3) ");
     scanf("%d", &t->impo);
-    printf("=> 수정성공!\n");
     return 1;
 }
 
@@ -34,13 +32,13 @@ int updateToDoList(ToDoList *t) { //일정수정 (일정 이름, 일정 시간, 중요도(1-3))
 
 int readToDoList(ToDoList t) { // 일정 목록 show (미완료 일정-중요도!=0 & 완료 일정 출력-중요도 0)
     printf("%s  %s  %d",t.Todo,t.time,t.impo);
-    if(t.end == 1) printf(" 완료\n");
-    else printf(" 미완료 \n");
+    if(t.end == 1) printf("    완료\n");
+    else printf("    미완료 \n");
     return 0;
 }
 
 int listToDoList(ToDoList *t[], int count){ // 전체 등록된 제품 리스트 출력
-    printf("%-15s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
+    printf("NO %-10s %-5s %-5s %-5s\n","할 일", "기한", "중요도", "완료여부");
     printf("---------------------------------------------------------------------------------\n");
     for(int i=0;i<count;i++)
     {
@@ -69,9 +67,6 @@ int deleteToDoList(ToDoList *t[], int count){ // 완료된 일정 체크(삭제)  : 완료�
     if(deleteok == 1){
         t[num-1]->impo=0;
         t[num-1]->end=1;
-        // if(t[num-1]) free(t[num-1]);
-        // t[num-1] = NULL;
-        // count--;
         printf("=> 삭제됨!\n");
     }
     return 0;
@@ -81,7 +76,7 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
     int scnt =0, num;
     char search[MAX];
 
-    printf("검색하고 싶은 메뉴는?(1.할 일 제목 2.기한, 3.중요도 4.완료여부) "); //제품검색할 방법 묻기
+    printf("검색하고 싶은 메뉴는?(1.할 일 제목 2.기한, 3.중요도) "); //제품검색할 방법 묻기
     scanf("%d",&num);
 
     //1. 할 일 제목으로 검색
@@ -138,23 +133,6 @@ void searchToDoList(ToDoList *t[], int count){ //할 일 검색
             }
         }
     }
-    //4. 완료여부로 검색
-    else if(num==4){
-        printf("검색하고 싶은 할 일의 완료여부는?(미완료:1,완료:2) ");
-        scanf("%d",&num);
-
-        printf("%s %s %s %s\n","할 일", "기한", "중요도", "완료여부");
-        printf("---------------------------------------------\n");
-        for(int i=0;i<count;i++)
-        {
-            if(t[i]==NULL) continue;
-            if(num-1 == t[i]->end) {
-                printf("%2d ",i+1);
-                readToDoList(*t[i]);
-                scnt++;
-            }
-        }
-    }
     if(scnt==0) printf("=> 검색된 데이터 없음!");
     printf("\n");
 }
@@ -180,7 +158,7 @@ int selectMenu(){ // 메뉴 : 아래 함수들을 메뉴로 출력하는 함수
     printf("4. 할 일 삭제\n");
     printf("5. 할 일 검색\n");
     printf("6. 할 일 목록 파일에 저장\n");
-    printf("7. 할 일 시간 계산 (당일)\n");
+    printf("7. 현재 시간 출력\n");
     printf("0. 종료\n\n");
     printf("=> 원하는 메뉴는? ");
     scanf("%d", &menu);
